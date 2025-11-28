@@ -1,0 +1,17 @@
+{
+  "name": "escala-dev-monorepo",
+  "version": "1.0.0",
+  "description": "Sistema de Gestão de Escalas, Turnos e Empresa - Monorepo",
+  "scripts": {
+    "mobile": "cd mobile && npm start",
+    "web": "cd web && npm run dev",
+    "backend": "cd backend && npm run dev",
+    "dev": "concurrently \"npm run backend\" \"npm run web\" \"npm run mobile\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, Image } from 'react-native';
+import { useState } from 'react';
+import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import styles from '../../css/login/index.js';
+import { useNavigation } from '@react-navigation/native';
 
 export default function LoginScreen() {
+    const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState('funcionario'); // 'funcionario' | 'empresa'
@@ -12,8 +15,9 @@ export default function LoginScreen() {
         // TODO: Implementar lógica de autenticação
     };
 
-    const handleForgotPassword = () => {
+    const handleForgotPassword = () => {    
         console.log('Esqueci minha senha');
+        navigation.navigate('Register');
         // TODO: Implementar lógica de recuperação de senha
     };
 
@@ -78,93 +82,3 @@ export default function LoginScreen() {
     );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#1a1a2e',
-        justifyContent: 'center',
-    },
-    header: {
-        alignItems: 'center',
-        marginBottom: 40,
-    },
-    title: {
-        fontSize: 32,
-        fontWeight: 'bold',
-        color: '#fff',
-        marginBottom: 8,
-    },
-    subtitle: {
-        fontSize: 16,
-        color: '#a0a0b0',
-    },
-    formContainer: {
-        backgroundColor: '#16213e',
-        marginHorizontal: 20,
-        padding: 24,
-        borderRadius: 16,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 8,
-        elevation: 5,
-    },
-    typeSelector: {
-        flexDirection: 'row',
-        backgroundColor: '#0f3460',
-        borderRadius: 12,
-        padding: 4,
-        marginBottom: 24,
-    },
-    typeButton: {
-        flex: 1,
-        paddingVertical: 10,
-        alignItems: 'center',
-        borderRadius: 8,
-    },
-    typeButtonActive: {
-        backgroundColor: '#e94560',
-    },
-    typeText: {
-        color: '#a0a0b0',
-        fontWeight: '600',
-    },
-    typeTextActive: {
-        color: '#fff',
-    },
-    label: {
-        color: '#fff',
-        marginBottom: 8,
-        fontSize: 14,
-        fontWeight: '500',
-    },
-    input: {
-        backgroundColor: '#1a1a2e',
-        color: '#fff',
-        padding: 16,
-        borderRadius: 12,
-        marginBottom: 20,
-        borderWidth: 1,
-        borderColor: '#0f3460',
-    },
-    loginButton: {
-        backgroundColor: '#e94560',
-        padding: 16,
-        borderRadius: 12,
-        alignItems: 'center',
-        marginTop: 8,
-    },
-    loginButtonText: {
-        color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
-    },
-    forgotButton: {
-        alignItems: 'center',
-        marginTop: 16,
-    },
-    forgotButtonText: {
-        color: '#a0a0b0',
-        fontSize: 14,
-    },
-});

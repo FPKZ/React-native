@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, KeyboardAvoidingView, Platform, } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import styles from '../../css/login/index.js';
 import { useNavigation } from '@react-navigation/native';
+import { api } from '../../app/api';
 
 export default function LoginScreen() {
     const navigation = useNavigation();
@@ -11,7 +12,9 @@ export default function LoginScreen() {
     const [userType, setUserType] = useState('funcionario'); // 'funcionario' | 'empresa'
 
     const handleLogin = () => {
+        api.signIn(email, password)
         console.log('Login:', { email, password, userType });
+        navigation.navigate('Home');
         // TODO: Implementar lógica de autenticação
     };
 
@@ -22,62 +25,71 @@ export default function LoginScreen() {
     };
 
     return (
-        <KeyboardAvoidingView
-            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-            style={styles.container}
+        <KeyboardAvoidingView 
+            style={{ flex: 1 }} 
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         >
-            <StatusBar style="light" />
+            <ScrollView 
+                contentContainerStyle={{ flexGrow: 1 }}
+                keyboardShouldPersistTaps="handled"
+                style={styles.container}
+            >
+                <View className="flex-1 justify-center">
 
-            <View style={styles.header}>
-                <Text style={styles.title}>Escala Dev</Text>
-                <Text style={styles.subtitle}>Gestão Inteligente de Turnos</Text>
-            </View>
+                    <StatusBar style="light" />
 
-            <View style={styles.formContainer}>
-                <View style={styles.typeSelector}>
-                    <TouchableOpacity
-                        style={[styles.typeButton, userType === 'funcionario' && styles.typeButtonActive]}
-                        onPress={() => setUserType('funcionario')}
-                    >
-                        <Text style={[styles.typeText, userType === 'funcionario' && styles.typeTextActive]}>Funcionário</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={[styles.typeButton, userType === 'empresa' && styles.typeButtonActive]}
-                        onPress={() => setUserType('empresa')}
-                    >
-                        <Text style={[styles.typeText, userType === 'empresa' && styles.typeTextActive]}>Empresa</Text>
-                    </TouchableOpacity>
+                    <View style={styles.header}>
+                        <Text style={styles.title}>Escala Dev</Text>
+                        <Text style={styles.subtitle}>Gestão Inteligente de Turnos</Text>
+                    </View>
+
+                    <View style={styles.formContainer}>
+                        <View style={styles.typeSelector}>
+                            <TouchableOpacity
+                                style={[styles.typeButton, userType === 'funcionario' && styles.typeButtonActive]}
+                                onPress={() => setUserType('funcionario')}
+                            >
+                                <Text style={[styles.typeText, userType === 'funcionario' && styles.typeTextActive]}>Funcionário</Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={[styles.typeButton, userType === 'empresa' && styles.typeButtonActive]}
+                                onPress={() => setUserType('empresa')}
+                            >
+                                <Text style={[styles.typeText, userType === 'empresa' && styles.typeTextActive]}>Empresa</Text>
+                            </TouchableOpacity>
+                        </View>
+
+                        <Text style={styles.label}>Email</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="seu@email.com"
+                            placeholderTextColor="#999"
+                            value={email}
+                            onChangeText={setEmail}
+                            autoCapitalize="none"
+                            keyboardType="email-address"
+                        />
+
+                        <Text style={styles.label}>Senha</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="********"
+                            placeholderTextColor="#999"
+                            value={password}
+                            onChangeText={setPassword}
+                            secureTextEntry
+                        />
+
+                        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
+                            <Text style={styles.loginButtonText}>Entrar</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.forgotButton} onPress={handleForgotPassword}>
+                            <Text style={styles.forgotButtonText}>Esqueci minha senha</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-
-                <Text style={styles.label}>Email</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="seu@email.com"
-                    placeholderTextColor="#999"
-                    value={email}
-                    onChangeText={setEmail}
-                    autoCapitalize="none"
-                    keyboardType="email-address"
-                />
-
-                <Text style={styles.label}>Senha</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="********"
-                    placeholderTextColor="#999"
-                    value={password}
-                    onChangeText={setPassword}
-                    secureTextEntry
-                />
-
-                <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-                    <Text style={styles.loginButtonText}>Entrar</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.forgotButton} onPress={handleForgotPassword}>
-                    <Text style={styles.forgotButtonText}>Esqueci minha senha</Text>
-                </TouchableOpacity>
-            </View>
+            </ScrollView>
         </KeyboardAvoidingView>
     );
 }

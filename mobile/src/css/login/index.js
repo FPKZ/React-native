@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
     },
     typeSelector: {
         flexDirection: 'row',
-        backgroundColor: '#0f3460',
         borderRadius: 12,
         padding: 4,
         marginBottom: 24,

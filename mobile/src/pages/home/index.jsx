@@ -1,27 +1,31 @@
-import { View, Text, ScrollView, KeyboardAvoidingView, Pressable } from 'react-native';
-import Constants from 'expo-constants';
+import { View, Text, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Ionicons } from '@expo/vector-icons';
+import { Calendar } from 'react-native-calendars';
+import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 
-const statusBarHeight = Constants.statusBarHeight;
-
 export default function Home() {
+    
+    const [selectedDay, setSelectedDay] = useState({});
     const navigation = useNavigation();
+    
+    const handleDayPress = (day) => {
+        navigation.navigate('DetalhesTurno', { day });
+        console.log(day);
+        // setSelectedDay({... selectedDay, [day.dateString]: {marked: true, selected: true, selectedColor: 'blue'}});
+    }
+    
     return (
-        <KeyboardAvoidingView>
-            <ScrollView>
-                <StatusBar style="auto" />
-                <View className='flex-1 flex-row justify-between items-center p-5 h-fit border-b border-gray-300' style={{ marginTop: statusBarHeight }}>
-                    <Pressable className='bg-gray-200 p-2 rounded-full'>
-                        <Ionicons name="menu" size={24} color="#color-blue-900" />
-                    </Pressable>
-                    <Text className='text-2xl font-bold'>Home</Text>
-                    <Pressable className='bg-gray-200 p-2 rounded-full active:bg-gray-300'>
-                        <Ionicons name="home" size={24} color="#color-blue-900" />
-                    </Pressable>
+        <>
+            <StatusBar style="auto" />
+            <ScrollView className='bg-white'>
+                <View className='p-4'>
+                    <Calendar 
+                        onDayPress={day => handleDayPress(day)}
+                        markedDates={selectedDay}
+                    />
                 </View>
             </ScrollView>
-        </KeyboardAvoidingView> 
+        </>
     );
 }

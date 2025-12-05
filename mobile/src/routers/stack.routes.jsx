@@ -1,37 +1,57 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-// import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-// import { createDrawerNavigator } from '@react-navigation/drawer';
-import { NavigationContainer } from "@react-navigation/native";
 import LoginScreen from '../pages/auth/LoginScreen';
 import EsqueciSenha from '../pages/auth/EsqueciSenha';
-import HomeScreen from '../pages/home';
+import DetalhesTurno from '../pages/detalhesTurno';
+import TabRoutes from './tab.routes';
 
 const Stack = createNativeStackNavigator();
 
 export default function StackRoutes() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator screenOptions={{ 
+        <Stack.Navigator 
+            screenOptions={{ 
                 headerShown: false,
-                animation: 'none'
-            }}>
-                <Stack.Screen name="Login" component={LoginScreen} />
-                <Stack.Screen name="Register" component={EsqueciSenha} />
-                <Stack.Screen name="Home" component={HomeScreen} />
-            </Stack.Navigator>
-        </NavigationContainer>
+            }}
+            style={{ backgroundColor: '#ffffff' }}
+            className='h-full'
+        >
+            {/* Rotas de autenticação - animação fade */}
+            <Stack.Screen 
+                name="Login" 
+                component={LoginScreen}
+                options={{
+                    animation: 'fade',
+                    animationDuration: 300
+                }}
+            />
+            <Stack.Screen 
+                name="Register" 
+                component={EsqueciSenha}
+                options={{
+                    animation: 'fade',
+                    animationDuration: 300
+                }}
+            />
+
+            {/* Tab Navigator - Home, Trocas, Perfil (sem animação entre tabs) */}
+            <Stack.Screen 
+                name="HomeTabs" 
+                component={TabRoutes}
+                options={{
+                    animation: 'slide_from_right',
+                    animationDuration: 400
+                }}
+            />
+
+            {/* Outras rotas - animação slide from bottom */}
+            <Stack.Screen 
+                name="DetalhesTurno" 
+                component={DetalhesTurno}
+                options={{
+                    animation: 'slide_from_bottom',
+                    animationDuration: 500
+                }}
+            />
+        </Stack.Navigator>
     );
 }
-
-
-{/* <Stack.Navigator screenOptions={{ headerShown: false }}>
-    <Stack.Screen name="Login" component={LoginScreen} />
-</Stack.Navigator> */}
-
-{/* <Tab.Navigator>
-    <Tab.Screen name="Login" component={LoginScreen} />
-</Tab.Navigator> */}
-
-{/* <Drawer.Navigator screenOptions={{ headerShown: false }}>
-    <Drawer.Screen name="Login" component={LoginScreen} />
-</Drawer.Navigator> */}

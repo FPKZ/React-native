@@ -4,6 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import styles from '../../css/login/index.js';
 import { useNavigation } from '@react-navigation/native';
 import { api } from '../../app/api';
+import { useTheme } from '../../contexts/ThemeContext';
 
 export default function LoginScreen() {
     const navigation = useNavigation();
@@ -11,10 +12,12 @@ export default function LoginScreen() {
     const [password, setPassword] = useState('');
     const [userType, setUserType] = useState('funcionario'); // 'funcionario' | 'empresa'
 
+    const { theme, isDark } = useTheme();
+
     const handleLogin = () => {
         api.signIn(email, password)
         console.log('Login:', { email, password, userType });
-        navigation.navigate('Home');
+        navigation.navigate('HomeTabs');
         // TODO: Implementar lógica de autenticação
     };
 
@@ -32,19 +35,19 @@ export default function LoginScreen() {
             <ScrollView 
                 contentContainerStyle={{ flexGrow: 1 }}
                 keyboardShouldPersistTaps="handled"
-                style={styles.container}
+                style={{ backgroundColor: theme.background }}
             >
                 <View className="flex-1 justify-center">
 
-                    <StatusBar style="light" />
+                    <StatusBar style={isDark ? 'light' : 'dark'} />
 
                     <View style={styles.header}>
-                        <Text style={styles.title}>Escala Dev</Text>
-                        <Text style={styles.subtitle}>Gestão Inteligente de Turnos</Text>
+                        <Text style={{...styles.title, color: theme.text}}>Escala Dev</Text>
+                        <Text style={{...styles.subtitle, color: theme.text}}>Gestão Inteligente de Turnos</Text>
                     </View>
 
-                    <View style={styles.formContainer}>
-                        <View style={styles.typeSelector}>
+                    <View style={{...styles.formContainer, backgroundColor: theme.surface}}>
+                        <View style={{...styles.typeSelector, backgroundColor: theme.components.typeSelector.backgroundColor}}>
                             <TouchableOpacity
                                 style={[styles.typeButton, userType === 'funcionario' && styles.typeButtonActive]}
                                 onPress={() => setUserType('funcionario')}
@@ -59,9 +62,9 @@ export default function LoginScreen() {
                             </TouchableOpacity>
                         </View>
 
-                        <Text style={styles.label}>Email</Text>
+                        <Text style={{...styles.label, color: theme.text}}>Email</Text>
                         <TextInput
-                            style={styles.input}
+                            style={{...styles.input, borderColor: theme.border}}
                             placeholder="seu@email.com"
                             placeholderTextColor="#999"
                             value={email}
@@ -70,9 +73,9 @@ export default function LoginScreen() {
                             keyboardType="email-address"
                         />
 
-                        <Text style={styles.label}>Senha</Text>
+                        <Text style={{...styles.label, color: theme.text}}>Senha</Text>
                         <TextInput
-                            style={styles.input}
+                            style={{...styles.input, borderColor: theme.border}}
                             placeholder="********"
                             placeholderTextColor="#999"
                             value={password}
@@ -81,11 +84,11 @@ export default function LoginScreen() {
                         />
 
                         <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-                            <Text style={styles.loginButtonText}>Entrar</Text>
+                            <Text style={{...styles.loginButtonText, color: theme.text}}>Entrar</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.forgotButton} onPress={handleForgotPassword}>
-                            <Text style={styles.forgotButtonText}>Esqueci minha senha</Text>
+                            <Text style={{...styles.forgotButtonText, color: theme.text}}>Esqueci minha senha</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

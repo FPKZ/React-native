@@ -3,6 +3,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'
 import { Pressable, View } from 'react-native';
 import { ComponentProps } from 'react';
+import { useTheme } from '../../contexts/ThemeContext';
 
 interface HeaderProps {
     buttonLeft?: {
@@ -23,8 +24,9 @@ interface HeaderProps {
 export default function Header({buttonLeft, buttonRight, children }: HeaderProps) {
     const navigation = useNavigation()
     const statusBarHeight = Constants.statusBarHeight;
+    const { theme } = useTheme();
     return (
-        <View className='flex-row justify-between items-center p-5 border-b border-gray-300 position-relative' style={{ marginTop: statusBarHeight }}>
+        <View className='flex-row justify-between items-center p-5 border-b border-gray-300 position-relative' style={{ marginTop: statusBarHeight, backgroundColor: theme.background }}>
             {buttonLeft && (
                 <View className='flex-row items-center absolute left-4'>
                     <Pressable className={`p-2 rounded-full active:${buttonLeft.bg_active}`} onPress={() => {buttonLeft?.onPress ? buttonLeft.onPress() : navigation.goBack()}}>

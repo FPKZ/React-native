@@ -3,11 +3,15 @@ import Footer from "./include/Footer";
 import { View, Pressable, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "../contexts/ThemeContext";
 
 export default function Layout(props) {
     const navigator = useNavigation();
+    const { theme } = useTheme();
     return (
-        <View className="flex-1 bg-white">
+        <View className="flex-1"
+            style={{ backgroundColor: theme.background }}
+        >
             <Header buttonLeft={{
                 name: "menu",
                 color: "blue",

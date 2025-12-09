@@ -12,7 +12,6 @@ export default function StackRoutes() {
             screenOptions={{ 
                 headerShown: false,
             }}
-            style={{ backgroundColor: '#ffffff' }}
             className='h-full'
         >
             {/* Rotas de autenticação - animação fade */}

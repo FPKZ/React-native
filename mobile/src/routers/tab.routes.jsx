@@ -32,7 +32,7 @@ export default function TabRoutes() {
     };
 
     return (
-        <View className="flex-1 bg-white">
+        <View className="flex-1">
             {/* Header fixo */}
             <Header 
                 buttonLeft={{

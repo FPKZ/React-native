@@ -14,12 +14,12 @@ export default function Layout(props) {
         >
             <Header buttonLeft={{
                 name: "menu",
-                color: "blue",
+                color: theme.text,
                 bg_active: "bg-blue-100",
                 onPress: () => {}
             }} buttonRight={{
                 name: "settings-outline",
-                color: "blue",
+                color: theme.text,
                 bg_active: "bg-blue-100",
                 onPress: () => {}
             }}>

@@ -1,21 +1,18 @@
 import { View, Text, ScrollView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-import { Calendar } from 'react-native-calendars';
+import { Calendar, LocaleConfig } from 'react-native-calendars';
 import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useTheme } from '../../contexts/ThemeContext';
+import CalendarComponent from '../../components/Calendar';
 
 export default function Home() {
-    
+
     const [selectedDay, setSelectedDay] = useState({});
     const navigation = useNavigation();
     const { theme, isDark } = useTheme();
+
     
-    const handleDayPress = (day) => {
-        navigation.navigate('DetalhesTurno', { day });
-        console.log(day);
-        // setSelectedDay({... selectedDay, [day.dateString]: {marked: true, selected: true, selectedColor: 'blue'}});
-    }
     
     return (
         <>
@@ -24,10 +21,7 @@ export default function Home() {
                 style={{ backgroundColor: theme.background }}
             >
                 <View className='p-4'>
-                    <Calendar 
-                        onDayPress={day => handleDayPress(day)}
-                        markedDates={selectedDay}
-                    />
+                    <CalendarComponent />
                 </View>
             </ScrollView>
         </>

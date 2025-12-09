@@ -6,6 +6,7 @@ import HomeScreen from '../pages/home';
 import Perfil from '../pages/perfil';
 import Trocas from '../pages/trocas';
 import { Header, Footer } from '../layout';
+import { useTheme } from '../contexts/ThemeContext';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
@@ -14,6 +15,8 @@ const Tab = createBottomTabNavigator();
 
 export default function TabRoutes() {
     const [currentTab, setCurrentTab] = useState('Home');
+
+    const { theme, isDark } = useTheme();
 
     const insets = useSafeAreaInsets();
 
@@ -32,23 +35,23 @@ export default function TabRoutes() {
     };
 
     return (
-        <View className="flex-1">
+        <View className="flex-1" style={{ backgroundColor: theme.background }}>
             {/* Header fixo */}
             <Header 
                 buttonLeft={{
                     name: "menu",
-                    color: "blue",
-                    bg_active: "bg-blue-100",
+                    color: theme.text,
+                    bg_active: isDark ? "bg-blue-100" : "bg-slate-800",
                     onPress: () => {}
                 }} 
                 buttonRight={{
                     name: "settings-outline",
-                    color: "blue",
+                    color: theme.text,
                     bg_active: "bg-blue-100",
                     onPress: () => {}
                 }}
             >
-                <Text className='text-2xl font-bold'>{currentTab}</Text>
+                <Text className='text-2xl font-bold' style={{ color: theme.text }}>{currentTab}</Text>
             </Header>
 
             {/* Conteúdo das tabs */}
@@ -72,9 +75,9 @@ export default function TabRoutes() {
                         tabBarActiveTintColor: '#3b82f6', // azul quando ativo
                         tabBarInactiveTintColor: '#6b7280', // cinza quando inativo
                         tabBarStyle: {
-                            backgroundColor: '#ffffff',
+                            backgroundColor: theme.background,
                             borderTopWidth: 1,
-                            borderTopColor: '#e5e7eb',
+                            borderTopColor: theme.border,
                             height: 70,
                             paddingBottom: insets.bottom,
                             paddingTop: 8,

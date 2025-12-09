@@ -26,11 +26,11 @@ export default function Header({buttonLeft, buttonRight, children }: HeaderProps
     const statusBarHeight = Constants.statusBarHeight;
     const { theme } = useTheme();
     return (
-        <View className='flex-row justify-between items-center p-5 border-b border-gray-300 position-relative' style={{ marginTop: statusBarHeight, backgroundColor: theme.background }}>
+        <View className='flex-row justify-between items-center p-5 position-relative' style={{ marginTop: statusBarHeight, backgroundColor: theme.background, borderColor: theme.border, borderWidth: 0, borderBottomWidth: 1 }}>
             {buttonLeft && (
                 <View className='flex-row items-center absolute left-4'>
                     <Pressable className={`p-2 rounded-full active:${buttonLeft.bg_active}`} onPress={() => {buttonLeft?.onPress ? buttonLeft.onPress() : navigation.goBack()}}>
-                        <Ionicons name={buttonLeft.name} size={24} color={buttonLeft.color} />
+                        <Ionicons name={buttonLeft.name} size={24} style={{ color: buttonLeft.color }} />
                     </Pressable>
                 </View>
             )}

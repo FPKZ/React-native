@@ -3,10 +3,12 @@ import styles from '../../css/login/index.js';
 import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
+import { useTheme } from '../../contexts/ThemeContext';
 
 export default function EsqueciSenha() {
     const navigation = useNavigation();
     const [email, setEmail] = useState('');
+    const { theme, isDark } = useTheme();
 
     const handleRecuperarSenha = () => {
         console.log('Login:', { email, password, userType });
@@ -22,20 +24,20 @@ export default function EsqueciSenha() {
             <ScrollView 
                 contentContainerStyle={{ flexGrow: 1 }}
                 keyboardShouldPersistTaps="handled"
-                style={styles.container}
+                style={{ ...styles.container, backgroundColor: theme.background }}
             >
                 <View className="flex-1 justify-center">
-                    <StatusBar style="light" />
+                    <StatusBar style={isDark ? 'light' : 'dark'} />
 
-                    <View style={styles.header}>
-                        <Text style={styles.title}>Escala Dev</Text>
-                        <Text style={styles.subtitle}>Gestão Inteligente de Turnos</Text>
+                    <View style={{ ...styles.header, backgroundColor: theme.background }}>
+                        <Text style={{ ...styles.title, color: theme.text }}>Escala Dev</Text>
+                        <Text style={{ ...styles.subtitle, color: theme.text }}>Gestão Inteligente de Turnos</Text>
                     </View>
 
-                    <View style={styles.formContainer}>
-                        <Text style={styles.label}>Email</Text>
+                    <View style={{ ...styles.formContainer, backgroundColor: theme.background }}>
+                        <Text style={{ ...styles.label, color: theme.text }}>Email</Text>
                         <TextInput
-                            style={styles.input}
+                            style={{ ...styles.input, backgroundColor: theme.input, color: theme.text }}
                             placeholder="seu@email.com"
                             placeholderTextColor="#999"
                             value={email}
@@ -45,12 +47,12 @@ export default function EsqueciSenha() {
                         />
 
 
-                        <TouchableOpacity style={styles.loginButton} onPress={handleRecuperarSenha}>
-                            <Text style={styles.loginButtonText}>Recuperar Senha</Text>
+                        <TouchableOpacity style={{ ...styles.loginButton, ...theme.loginButton }} onPress={handleRecuperarSenha}>
+                            <Text style={{ ...styles.loginButtonText, color: theme.text }}>Recuperar Senha</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.forgotButton} onPress={() => navigation.navigate('Login')}>
-                            <Text style={styles.forgotButtonText}>Voltar para Login</Text>
+                        <TouchableOpacity style={{ ...styles.forgotButton, backgroundColor: theme.background }} onPress={() => navigation.navigate('Login')}>
+                            <Text style={{ ...styles.forgotButtonText, color: theme.text }}>Voltar para Login</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

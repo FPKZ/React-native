@@ -7,19 +7,19 @@ import { useTheme } from "../contexts/ThemeContext";
 
 export default function Layout(props) {
     const navigator = useNavigation();
-    const { theme } = useTheme();
+    const { theme, colorScheme } = useTheme();
     return (
         <View className="flex-1"
             style={{ backgroundColor: theme.background }}
         >
             <Header buttonLeft={{
                 name: "menu",
-                color: theme.text,
+                color: "blue",
                 bg_active: "bg-blue-100",
                 onPress: () => {}
             }} buttonRight={{
                 name: "settings-outline",
-                color: theme.text,
+                color: "blue",
                 bg_active: "bg-blue-100",
                 onPress: () => {}
             }}>

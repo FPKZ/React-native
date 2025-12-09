@@ -1,15 +1,22 @@
-import StackRoutes from './src/routers/stack.routes';
-import "./global.css"
+import StackRoutes from "./src/routers/stack.routes";
+import "./global.css";
 import { NavigationContainer } from "@react-navigation/native";
-import { View } from 'react-native';
-import { ThemeProvider, useTheme } from './src/contexts/ThemeContext';
+import { View } from "react-native";
+import { ThemeProvider, useTheme } from "./src/contexts/ThemeContext";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 function AppContent() {
   const { theme } = useTheme();
 
   return (
-    <NavigationContainer className='h-full'>
-      <View className='h-full' style={{ flex: 1, backgroundColor: theme.background }}>
+    <NavigationContainer
+      className="h-full"
+      style={{ backgroundColor: theme.background }}
+    >
+      <View
+        className="h-full"
+        style={{ flex: 1, backgroundColor: theme.background }}
+      >
         <StackRoutes />
       </View>
     </NavigationContainer>
@@ -18,9 +25,11 @@ function AppContent() {
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
+    <SafeAreaProvider>
+      <ThemeProvider>
+        <AppContent />
+      </ThemeProvider>
+    </SafeAreaProvider>
   );
 }
 /*

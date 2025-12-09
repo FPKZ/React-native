@@ -64,7 +64,7 @@ export default function LoginScreen() {
 
                         <Text style={{...styles.label, color: theme.text}}>Email</Text>
                         <TextInput
-                            style={{...styles.input, borderColor: theme.border}}
+                            style={{...styles.input, borderColor: theme.border, backgroundColor: theme.input, color: theme.text}}
                             placeholder="seu@email.com"
                             placeholderTextColor="#999"
                             value={email}
@@ -75,7 +75,7 @@ export default function LoginScreen() {
 
                         <Text style={{...styles.label, color: theme.text}}>Senha</Text>
                         <TextInput
-                            style={{...styles.input, borderColor: theme.border}}
+                            style={{...styles.input, borderColor: theme.border, backgroundColor: theme.input, color: theme.text}}
                             placeholder="********"
                             placeholderTextColor="#999"
                             value={password}

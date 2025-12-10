@@ -7,6 +7,7 @@ import Perfil from "../pages/perfil";
 import Trocas from "../pages/trocas";
 import { Header, Footer } from "../layout";
 import { useTheme } from "../contexts/ThemeContext";
+import { useNavigation } from "@react-navigation/native";
 
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
@@ -17,6 +18,8 @@ export default function TabRoutes() {
 
   const { theme, isDark, setIsDark } = useTheme();
 
+  const navigation = useNavigation();
+
   const insets = useSafeAreaInsets();
 
   // Função para obter o título baseado na tab ativa
@@ -25,7 +28,7 @@ export default function TabRoutes() {
       case "HomeTab":
         return "Home";
       case "TrocasTab":
-        return "Trocas";
+        return "Solicitações de Troca";
       case "PerfilTab":
         return "Perfil";
       default:
@@ -37,17 +40,11 @@ export default function TabRoutes() {
     <View style={{ flex: 1, backgroundColor: theme.background, paddingBottom: insets.bottom }}>
       {/* Header fixo */}
       <Header
-        buttonLeft={{
-          name: "menu",
-          color: theme.text,
-          bg_active: isDark ? "bg-blue-100" : "bg-slate-800",
-          onPress: () => {},
-        }}
         buttonRight={{
-          name: "settings-outline",
-          color: theme.text,
+          name: "notifications",
+          color: "#3b82f6",
           bg_active: "bg-blue-100",
-          onPress: () => setIsDark(!isDark),
+          onPress: () => navigation.navigate("Notificacao"),
         }}
       >
         <Text className="text-2xl font-bold" style={{ color: theme.text }}>

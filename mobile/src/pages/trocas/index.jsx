@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native';
+import React, { useState } from "react";
+import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { useTheme } from "../../contexts/ThemeContext";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
@@ -7,26 +7,57 @@ import { Ionicons } from "@expo/vector-icons";
 
 // Mock Data
 const MOCK_DATA = [
-  { id: 1, name: 'João Souza', status: 'accepted', date: '30 de Setembro', userInitials: 'JS', userColor: 'bg-blue-100' },
-  { id: 2, name: 'Maria Silva', status: 'pending', date: '02 de Outubro', userInitials: 'MA', userColor: 'bg-yellow-100' },
-  { id: 3, name: 'Carlos Pereira', status: 'rejected', date: '05 de Outubro', userInitials: 'CP', userColor: 'bg-red-100' },
-  { id: 4, name: 'Lúcia Santos', status: 'waiting', date: '11 de Outubro', userInitials: 'LA', userColor: 'bg-purple-100' },
+  {
+    id: 1,
+    name: "João Souza",
+    status: "accepted",
+    date: "30 de Setembro",
+    userInitials: "JS",
+    userColor: "bg-blue-100",
+  },
+  {
+    id: 2,
+    name: "Maria Silva",
+    status: "pending",
+    date: "02 de Outubro",
+    userInitials: "MA",
+    userColor: "bg-yellow-100",
+  },
+  {
+    id: 3,
+    name: "Carlos Pereira",
+    status: "rejected",
+    date: "05 de Outubro",
+    userInitials: "CP",
+    userColor: "bg-red-100",
+  },
+  {
+    id: 4,
+    name: "Lúcia Santos",
+    status: "waiting",
+    date: "11 de Outubro",
+    userInitials: "LA",
+    userColor: "bg-purple-100",
+  },
 ];
 
 export default function Trocas() {
   const navigation = useNavigation();
   const { theme, isDark } = useTheme();
   const insets = useSafeAreaInsets();
-  const [activeTab, setActiveTab] = useState('minhas'); // 'minhas' | 'para_mim'
+  const [activeTab, setActiveTab] = useState("minhas"); // 'minhas' | 'para_mim'
 
   const StatusBadge = ({ status }) => {
     const statusConfig = theme.status[status];
     return (
-      <View 
-        style={{ backgroundColor: statusConfig.background }} 
+      <View
+        style={{ backgroundColor: statusConfig.background }}
         className="px-3 py-1 rounded-full"
       >
-        <Text style={{ color: statusConfig.text }} className="text-xs font-bold">
+        <Text
+          style={{ color: statusConfig.text }}
+          className="text-xs font-bold"
+        >
           {statusConfig.label}
         </Text>
       </View>
@@ -34,18 +65,26 @@ export default function Trocas() {
   };
 
   const ExchangeCard = ({ item }) => (
-    <View 
-      style={{ backgroundColor: theme.card }} 
+    <TouchableOpacity
+      onPress={() => navigation.navigate("ChatTroca", { item })}
+      style={{ backgroundColor: theme.card }}
       className="p-4 rounded-2xl mb-3 flex-row items-center shadow-sm"
     >
       {/* Avatar */}
-      <View className={`w-12 h-12 rounded-full items-center justify-center mr-4 ${item.userColor}`}>
-        <Text className="text-blue-600 font-bold text-lg">{item.userInitials}</Text>
+      <View
+        className={`w-12 h-12 rounded-full items-center justify-center mr-4 ${item.userColor}`}
+      >
+        <Text className="text-blue-600 font-bold text-lg">
+          {item.userInitials}
+        </Text>
       </View>
 
       {/* Content */}
       <View className="flex-1 mr-2">
-        <Text style={{ color: theme.text }} className="font-bold text-base mb-1">
+        <Text
+          style={{ color: theme.text }}
+          className="font-bold text-base mb-1"
+        >
           Troca com {item.name}
         </Text>
         <Text style={{ color: theme.textSecondary }} className="text-sm">
@@ -55,14 +94,14 @@ export default function Trocas() {
 
       {/* Badge */}
       <StatusBadge status={item.status} />
-    </View>
+    </TouchableOpacity>
   );
 
   return (
-    <View 
-      style={{ flex: 1, backgroundColor: theme.background }}
+    <View
+      style={{ flex: 1, backgroundColor: theme.background, paddingTop: 20 }}
     >
-      <View 
+      {/* <View 
         style={{ 
           paddingTop: insets.top + 20, 
           paddingHorizontal: 20,
@@ -77,24 +116,28 @@ export default function Trocas() {
         <TouchableOpacity>
           <Ionicons name="options-outline" size={24} color={theme.text} />
         </TouchableOpacity>
-      </View>
+      </View> */}
 
       {/* Segment Control */}
       <View className="px-5 mb-6">
         <View className="flex-row bg-gray-200 dark:bg-slate-700 rounded-lg p-1 h-12">
-          <TouchableOpacity 
-            onPress={() => setActiveTab('minhas')}
-            className={`flex-1 items-center justify-center rounded-md ${activeTab === 'minhas' ? 'bg-blue-500 shadow-sm' : ''}`}
+          <TouchableOpacity
+            onPress={() => setActiveTab("minhas")}
+            className={`flex-1 items-center justify-center rounded-md ${activeTab === "minhas" ? "bg-blue-500 shadow-sm" : ""}`}
           >
-            <Text className={`font-semibold ${activeTab === 'minhas' ? 'text-white' : 'text-gray-500 dark:text-gray-300'}`}>
+            <Text
+              className={`font-semibold ${activeTab === "minhas" ? "text-white" : "text-gray-500 dark:text-gray-300"}`}
+            >
               Minhas Solicitações
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity 
-            onPress={() => setActiveTab('para_mim')}
-            className={`flex-1 items-center justify-center rounded-md ${activeTab === 'para_mim' ? 'bg-blue-500 shadow-sm' : ''}`}
+          <TouchableOpacity
+            onPress={() => setActiveTab("para_mim")}
+            className={`flex-1 items-center justify-center rounded-md ${activeTab === "para_mim" ? "bg-blue-500 shadow-sm" : ""}`}
           >
-            <Text className={`font-semibold ${activeTab === 'para_mim' ? 'text-white' : 'text-gray-500 dark:text-gray-300'}`}>
+            <Text
+              className={`font-semibold ${activeTab === "para_mim" ? "text-white" : "text-gray-500 dark:text-gray-300"}`}
+            >
               Para Mim
             </Text>
           </TouchableOpacity>
@@ -102,7 +145,7 @@ export default function Trocas() {
       </View>
 
       {/* Content */}
-      <ScrollView 
+      <ScrollView
         className="flex-1 px-5"
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingBottom: 100 }}
@@ -114,9 +157,9 @@ export default function Trocas() {
 
       {/* Floating Action Button */}
       <TouchableOpacity
-        style={{ 
-          position: 'absolute', 
-          bottom: 24, 
+        style={{
+          position: "absolute",
+          bottom: 24,
           right: 24,
           shadowColor: "#000",
           shadowOffset: { width: 0, height: 4 },

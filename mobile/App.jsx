@@ -11,7 +11,7 @@ function AppContent() {
   return (
     <NavigationContainer
       className="h-full"
-      style={{ backgroundColor: theme.background }}
+      style={{ flex: 1, backgroundColor: theme.background }}
     >
       <View
         className="h-full"

@@ -19,11 +19,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.svg",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.fpkz.mobile"
     },
     "web": {
       "favicon": "./assets/logo.svg",
       "bundler": "metro"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "0a5203d3-15f5-4ed0-a4be-0f84ba2af15a"
+      }
     }
   }
 }

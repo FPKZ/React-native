@@ -11,6 +11,13 @@ export const lightTheme = {
   success: '#10b981',
   navigationBar: '#ffffff',
   navigationButtons: 'dark',
+  card: '#ffffff',
+  status: {
+    accepted: { background: '#d1fae5', text: '#065f46', label: 'Aceito' },
+    waiting: { background: '#f3f4f6', text: '#374151', label: 'Aguardando' },
+    rejected: { background: '#fee2e2', text: '#991b1b', label: 'Recusado' },
+    pending: { background: '#fef3c7', text: '#92400e', label: 'Pendente' },
+  },
   
   // Estilos de Componentes Específicos
   components: {

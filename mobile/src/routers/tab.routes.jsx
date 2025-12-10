@@ -34,7 +34,7 @@ export default function TabRoutes() {
   };
 
   return (
-    <View className="flex-1" style={{ backgroundColor: theme.background, paddingBottom: insets.bottom }}>
+    <View style={{ flex: 1, backgroundColor: theme.background, paddingBottom: insets.bottom }}>
       {/* Header fixo */}
       <Header
         buttonLeft={{
@@ -80,10 +80,13 @@ export default function TabRoutes() {
             tabBarStyle: {
               backgroundColor: theme.background,
               borderTopWidth: 1,
+              borderBottomWidth: 0,
               borderTopColor: theme.border,
               height: 70,
-              paddingBottom: 0,
+              paddingBottom: insets.bottom,
               paddingTop: 8,
+              elevation: 0, // Remove sombra no Android
+              shadowOpacity: 0, // Remove sombra no iOS
             },
             tabBarLabelStyle: {
               fontSize: 12,

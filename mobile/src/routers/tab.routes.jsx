@@ -83,7 +83,7 @@ export default function TabRoutes() {
               borderBottomWidth: 0,
               borderTopColor: theme.border,
               height: 70,
-              paddingBottom: insets.bottom,
+              paddingBottom: 0,
               paddingTop: 8,
               elevation: 0, // Remove sombra no Android
               shadowOpacity: 0, // Remove sombra no iOS

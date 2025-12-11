@@ -49,16 +49,16 @@ export default function LoginScreen() {
                     <View style={{...styles.formContainer, backgroundColor: theme.surface}}>
                         <View style={{...styles.typeSelector, backgroundColor: theme.components.typeSelector.backgroundColor}}>
                             <TouchableOpacity
-                                style={[styles.typeButton, userType === 'funcionario' && styles.typeButtonActive]}
+                                style={[{ ...styles.typeButton, ...theme.components.typeButton}, userType === 'funcionario' && { ...styles.typeButtonActive, ...theme.components.typeButtonActive}]}
                                 onPress={() => setUserType('funcionario')}
                             >
-                                <Text style={[styles.typeText, userType === 'funcionario' && styles.typeTextActive]}>Funcionário</Text>
+                                <Text style={[{ ...styles.typeText, ...theme.components.typeText}, userType === 'funcionario' && { ...styles.typeTextActive, ...theme.components.typeTextActive}]}>Funcionário</Text>
                             </TouchableOpacity>
                             <TouchableOpacity
-                                style={[styles.typeButton, userType === 'empresa' && styles.typeButtonActive]}
+                                style={[{ ...styles.typeButton, ...theme.components.typeButton}, userType === 'empresa' && { ...styles.typeButtonActive, ...theme.components.typeButtonActive}]}
                                 onPress={() => setUserType('empresa')}
                             >
-                                <Text style={[styles.typeText, userType === 'empresa' && styles.typeTextActive]}>Empresa</Text>
+                                <Text style={[{ ...styles.typeText, ...theme.components.typeText}, userType === 'empresa' && { ...styles.typeTextActive, ...theme.components.typeTextActive}]}>Empresa</Text>
                             </TouchableOpacity>
                         </View>
 
@@ -83,12 +83,12 @@ export default function LoginScreen() {
                             secureTextEntry
                         />
 
-                        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
-                            <Text style={{...styles.loginButtonText, color: theme.text}}>Entrar</Text>
+                        <TouchableOpacity style={{ ...styles.loginButton, backgroundColor: theme.components.loginButton.backgroundColor }} onPress={handleLogin}>
+                            <Text style={{...styles.loginButtonText, color: theme.components.loginButton.text}}>Entrar</Text>
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.forgotButton} onPress={handleForgotPassword}>
-                            <Text style={{...styles.forgotButtonText, color: theme.text}}>Esqueci minha senha</Text>
+                            <Text style={{...styles.forgotButtonText}}>Esqueci minha senha</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

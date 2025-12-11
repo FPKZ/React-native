@@ -60,12 +60,18 @@ export const darkTheme = {
 
   // Estilos de Componentes Específicos
   components: {
+    icons: {
+      color: "#F5FAFF",
+    },
     typeSelector: {
       backgroundColor: "#0f3460",
     },
     typeButton: {
       activeBackgroundColor: "#e94560",
       inactiveBackgroundColor: "transparent",
+    },
+    typeButtonActive: {
+        backgroundColor: '#e94560',
     },
     typeText: {
       activeColor: "#ffffff",

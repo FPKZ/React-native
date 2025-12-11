@@ -171,8 +171,8 @@ export default function ChatTroca() {
 
           {/* Proposal Card */}
           <View
-            style={{ backgroundColor: theme.chat.proposalCard }}
-            className="mt-4 mb-6 p-4 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800"
+            style={{ backgroundColor: theme.chat.proposalCard, borderColor: theme.border }}
+            className="mt-4 mb-6 p-4 rounded-2xl shadow-sm border"
           >
             <Text
               style={{ color: theme.text }}
@@ -251,10 +251,13 @@ export default function ChatTroca() {
           style={{
             backgroundColor: theme.surface,
             paddingBottom: insets.bottom + 10,
+            borderColor: theme.border,
           }}
-          className="p-4 border-t border-gray-100 dark:border-gray-800 flex-row items-center"
+          className="p-4 border-t flex-row items-center"
         >
-          <View className="flex-1 bg-gray-100 dark:bg-slate-800 rounded-full px-4 py-2 mr-3 border border-gray-200 dark:border-gray-700">
+          <View
+            style={{ backgroundColor: theme.surface, borderColor: theme.border }}
+            className="flex-1 rounded-full px-4 py-2 mr-3 border">
             <TextInput
               placeholder="Digite sua mensagem..."
               placeholderTextColor={theme.textSecondary}

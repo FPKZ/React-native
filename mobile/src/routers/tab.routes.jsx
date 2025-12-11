@@ -42,7 +42,7 @@ export default function TabRoutes() {
       <Header
         buttonRight={{
           name: "notifications",
-          color: "#3b82f6",
+          color: theme.components.icons.color,
           bg_active: "bg-blue-100",
           onPress: () => navigation.navigate("Notificacao"),
         }}
@@ -72,7 +72,7 @@ export default function TabRoutes() {
 
               return <Ionicons name={iconName} size={size} color={color} />;
             },
-            tabBarActiveTintColor: "#3b82f6", // azul quando ativo
+            tabBarActiveTintColor: theme.components.icons.color, // azul quando ativo
             tabBarInactiveTintColor: "#6b7280", // cinza quando inativo
             tabBarStyle: {
               backgroundColor: theme.background,

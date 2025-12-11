@@ -44,6 +44,9 @@ export const lightTheme = {
   
   // Estilos de Componentes Específicos
   components: {
+    icons: {
+      color: "#3b82f6",
+    },
     typeSelector: {
       backgroundColor: "#e5e7eb",
     },
@@ -51,12 +54,15 @@ export const lightTheme = {
       activeBackgroundColor: "#e94560",
       inactiveBackgroundColor: "transparent",
     },
+    typeButtonActive: {
+        backgroundColor: '#3b82f6',
+    },
     typeText: {
       activeColor: "#ffffff",
       inactiveColor: "#6b7280",
     },
     loginButton: {
-      backgroundColor: "#e94560",
+      backgroundColor: "#3b82f6",
       text: "#ffffff",
     },
     forgotButton: {

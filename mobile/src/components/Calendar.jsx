@@ -77,9 +77,9 @@ export default function CalendarComponent() {
     return (
         <Calendar 
         key={isDark ? 'dark' : 'light'}
-            onDayPress={day => handleDayPress(day)}
-            markedDates={selectedDay}
-            theme={calendarTheme}
+            // onDayPress={day => handleDayPress(day)}
+            // markedDates={selectedDay}
+            // theme={calendarTheme}
         />
     );
 }

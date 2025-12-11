@@ -120,10 +120,11 @@ export default function Trocas() {
 
       {/* Segment Control */}
       <View className="px-5 mb-6">
-        <View className="flex-row bg-gray-200 dark:bg-slate-700 rounded-lg p-1 h-12">
+        <View className="flex-row rounded-lg p-1 h-12" style={{ backgroundColor: theme.surface }}>
           <TouchableOpacity
             onPress={() => setActiveTab("minhas")}
-            className={`flex-1 items-center justify-center rounded-md ${activeTab === "minhas" ? "bg-blue-500 shadow-sm" : ""}`}
+            className={`flex-1 items-center justify-center rounded-md`}
+            style={{ backgroundColor: activeTab === "minhas" ? theme.components.typeButtonActive.backgroundColor : theme.components.typeButton.backgroundColor }}
           >
             <Text
               className={`font-semibold ${activeTab === "minhas" ? "text-white" : "text-gray-500 dark:text-gray-300"}`}
@@ -133,7 +134,8 @@ export default function Trocas() {
           </TouchableOpacity>
           <TouchableOpacity
             onPress={() => setActiveTab("para_mim")}
-            className={`flex-1 items-center justify-center rounded-md ${activeTab === "para_mim" ? "bg-blue-500 shadow-sm" : ""}`}
+            className={`flex-1 items-center justify-center rounded-md`}
+            style={{ backgroundColor: activeTab === "para_mim" ? theme.components.typeButtonActive.backgroundColor : theme.components.typeButton.backgroundColor }}
           >
             <Text
               className={`font-semibold ${activeTab === "para_mim" ? "text-white" : "text-gray-500 dark:text-gray-300"}`}

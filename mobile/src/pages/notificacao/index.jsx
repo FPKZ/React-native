@@ -46,7 +46,7 @@ export default function Notificacao() {
     const { theme } = useTheme();
     return (
         <View style={{ flex: 1, backgroundColor: theme.background }}>
-            <Header buttonLeft={{ name: "arrow-back", color: "#3b82f6", bg_active: "bg-slate-100", onPress: () => navigation.goBack() }}>
+            <Header buttonLeft={{ name: "arrow-back", color: theme.components.icons.color, bg_active: "bg-slate-100", onPress: () => navigation.goBack() }}>
                 <Text className="text-2xl font-bold" style={{ color: theme.text }}>
                     Notificações
                 </Text>

@@ -62,6 +62,7 @@ project-root/
 
 ## **Tabela Funcionário**
 | Campo | Tipo |
+|------|------|
 | id | uuid |
 | nome | string |
 | email | string |
@@ -73,6 +74,7 @@ project-root/
 
 ## **Tabela Turno**
 | Campo | Tipo |
+|------|------|
 | id | uuid |
 | nome_turno | string (ex: A, B, Noturno 1) |
 | tipo | enum (diurno/noturno) |
@@ -84,6 +86,7 @@ project-root/
 
 ## **Tabela Escala**
 | Campo | Tipo |
+|------|------|
 | funcionário_id | uuid |
 | data | date |
 | turno_id | uuid |
@@ -92,7 +95,8 @@ project-root/
 ---
 
 ## **Tabela Troca de Turno**
-| Campo | Tipo |
+| Campo | Tipo | Descrição |
+|------|------|-----------|
 | solicitante_id | uuid |
 | solicitado_id | uuid |
 | data_solicitante | date |
@@ -105,7 +109,8 @@ Fluxo documentado abaixo.
 ---
 
 ## **Tabela Notificações**
-| Campo | Tipo |
+| Campo | Tipo | Descrição |
+|------|------|-----------|
 | id | uuid |
 | funcionario_id | uuid |
 | tipo | string |

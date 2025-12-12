@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "mobile",
-    "slug": "mobile",
+    "name": "Escala_Dev",
+    "slug": "Escala_Dev",
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#F5FAFF"
       },
-      "package": "com.fpkz.mobile"
+      "package": "com.fpkz.Escala_Dev"
     },
     "web": {
       "favicon": "./assets/icon.png",

@@ -32,20 +32,51 @@ export const lightTheme = {
     },
   },
   profile: {
-    avatarEdit: '#3b82f6',
-    sectionTitle: '#6b7280',
-    iconBackground: '#f3f4f6',
-    logout: '#ef4444',
+    avatarEdit: "#3b82f6",
+    sectionTitle: "#6b7280",
+    iconBackground: "#f3f4f6",
+    logout: "#ef4444",
     logouText: "#ffffff",
-    contaners: '#ffffff',
-    avatarBorder: '#d1d5db',
-    btnAvatarBorder: '#ffffff',
+    contaners: "#ffffff",
+    avatarBorder: "#d1d5db",
+    btnAvatarBorder: "#ffffff",
   },
-  
+  calendar: {
+    backgroundColor: "#f3f4f6",
+    calendarBackground: "#f3f4f6",
+    textSectionTitleColor: "#b6c1cd",
+    selectedDayBackgroundColor: "#e94560",
+    selectedDayTextColor: "#ffffff",
+    todayTextColor: "#3b82f6",
+    dayTextColor: "#2d4150",
+    textDisabledColor: "#d9e1e8",
+    dotColor: "#00adf5",
+    selectedDotColor: "#ffffff",
+    arrowColor: "#3b82f6",
+    disabledArrowColor: "#d9e1e8",
+    monthTextColor: "#3b82f6",
+    indicatorColor: "#3b82f6",
+    textDayFontWeight: "300",
+    textMonthFontWeight: "bold",
+    textDayHeaderFontWeight: "300",
+    textDayFontSize: 16,
+    textMonthFontSize: 16,
+    textDayHeaderFontSize: 16,
+    types: {
+      workDay: "#fbbf24",
+      noturnoDay: "#003680",
+      extraDay: "#FA8805",
+      extraNoturnoDay: "#2F0080",
+      exchangeDay: "#C9FB13",
+      exchangeNoturnoDay: "#005F66",
+    },
+  },
+
   // Estilos de Componentes Específicos
   components: {
     icons: {
       color: "#3b82f6",
+      backgroundColor: "#e5e7eb",
     },
     typeSelector: {
       backgroundColor: "#e5e7eb",
@@ -55,7 +86,7 @@ export const lightTheme = {
       inactiveBackgroundColor: "transparent",
     },
     typeButtonActive: {
-        backgroundColor: '#3b82f6',
+      backgroundColor: "#3b82f6",
     },
     typeText: {
       activeColor: "#ffffff",

@@ -34,10 +34,10 @@ export default function EsqueciSenha() {
                         <Text style={{ ...styles.subtitle, color: theme.text }}>Gestão Inteligente de Turnos</Text>
                     </View>
 
-                    <View style={{ ...styles.formContainer, backgroundColor: theme.background }}>
+                    <View style={{ ...styles.formContainer, backgroundColor: theme.surface }}>
                         <Text style={{ ...styles.label, color: theme.text }}>Email</Text>
                         <TextInput
-                            style={{ ...styles.input, backgroundColor: theme.input, color: theme.text }}
+                            style={{ ...styles.input,borderColor: theme.border, backgroundColor: theme.input, color: theme.text }}
                             placeholder="seu@email.com"
                             placeholderTextColor="#999"
                             value={email}
@@ -47,12 +47,12 @@ export default function EsqueciSenha() {
                         />
 
 
-                        <TouchableOpacity style={{ ...styles.loginButton, ...theme.loginButton }} onPress={handleRecuperarSenha}>
-                            <Text style={{ ...styles.loginButtonText, color: theme.text }}>Recuperar Senha</Text>
+                        <TouchableOpacity style={{ ...styles.loginButton, ...theme.components.loginButton }} onPress={handleRecuperarSenha}>
+                            <Text style={{ ...styles.loginButtonText, color: theme.components.loginButton.text }}>Recuperar Senha</Text>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={{ ...styles.forgotButton, backgroundColor: theme.background }} onPress={() => navigation.navigate('Login')}>
-                            <Text style={{ ...styles.forgotButtonText, color: theme.text }}>Voltar para Login</Text>
+                        <TouchableOpacity style={{ ...styles.forgotButton, backgroundColor: theme.surface }} onPress={() => navigation.navigate('Login')}>
+                            <Text style={{ ...styles.forgotButtonText, color: theme.textSecondary }}>Voltar para Login</Text>
                         </TouchableOpacity>
                     </View>
                 </View>

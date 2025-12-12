@@ -58,10 +58,42 @@ export const darkTheme = {
     btnAvatarBorder: "#111827",
   },
 
+  calendar: {
+    backgroundColor: "#1a1a2e",
+    calendarBackground: "#1a1a2e",
+    textSectionTitleColor: "#b6c1cd",
+    selectedDayBackgroundColor: "#e94560",
+    selectedDayTextColor: "#ffffff",
+    todayTextColor: "#60a5fa",
+    dayTextColor: "#ffffff",
+    textDisabledColor: "#444444",
+    dotColor: "#e94560",
+    selectedDotColor: "#ffffff",
+    arrowColor: "#60a5fa",
+    disabledArrowColor: "#555555",
+    monthTextColor: "#60a5fa",
+    indicatorColor: "#60a5fa",
+    textDayFontWeight: "300",
+    textMonthFontWeight: "bold",
+    textDayHeaderFontWeight: "300",
+    textDayFontSize: 16,
+    textMonthFontSize: 16,
+    textDayHeaderFontSize: 16,
+    types: {
+      workDay: "#fbbf24",
+      noturnoDay: "#003680",
+      extraDay: "#FA8805",
+      extraNoturnoDay: "#2F0080",
+      exchangeDay: "#C9FB13",
+      exchangeNoturnoDay: "#005F66",
+    },
+  },
+
   // Estilos de Componentes Específicos
   components: {
     icons: {
       color: "#F5FAFF",
+      backgroundColor: "#30394D",
     },
     typeSelector: {
       backgroundColor: "#0f3460",
@@ -71,7 +103,7 @@ export const darkTheme = {
       inactiveBackgroundColor: "transparent",
     },
     typeButtonActive: {
-        backgroundColor: '#e94560',
+      backgroundColor: "#e94560",
     },
     typeText: {
       activeColor: "#ffffff",

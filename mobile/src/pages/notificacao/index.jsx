@@ -63,7 +63,7 @@ export default function Notificacao() {
 function NotificacaoComponent({ theme, item }) {
     return (
         <View className="flex-row w-full items-center justify-between p-5" style={{ backgroundColor: theme.background }}>
-            <View className="flex-row items-center justify-center" style={{ backgroundColor: theme.secondary, borderRadius: 10, padding: 10 }}>
+            <View className="flex-row items-center justify-center" style={{ backgroundColor: theme.components.icons.backgroundColor, borderRadius: 10, padding: 10 }}>
                 <MaterialIcons name={item.type === "group" ? "group" : "person"} size={24} color={theme.text} />
             </View>
             <View className="flex-1 mx-5">
